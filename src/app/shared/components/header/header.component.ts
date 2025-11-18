@@ -1,7 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { LanguageService } from '../../services/language.service';
-import { NavigationService } from '../../services/navigation.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -16,11 +15,17 @@ export class HeaderComponent {
   cartService = inject(CartService);
   isMenuOpen = signal(false);
 
+  scrollTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   toggleMenu() {
     this.isMenuOpen.update((value) => !value);
+    // this.scrollTop();
   }
 
   closeMenu() {
     this.isMenuOpen.set(false);
+    this.scrollTop();
   }
 }

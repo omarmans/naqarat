@@ -22,6 +22,7 @@
       <nav class="hidden md:flex gap-6 items-center">
         <a
           routerLink="/"
+          (click)="scrollTop()"
           routerLinkActive="text-amber-300"
           [routerLinkActiveOptions]="{ exact: true }"
           class="hover:text-amber-300 cursor-pointer transition"
@@ -30,6 +31,7 @@
         </a>
         <a
           routerLink="/products"
+          (click)="scrollTop()"
           routerLinkActive="text-amber-300"
           class="hover:text-amber-300 cursor-pointer transition"
         >
@@ -37,6 +39,7 @@
         </a>
         <a
           routerLink="/about"
+          (click)="scrollTop()"
           routerLinkActive="text-amber-300"
           class="hover:text-amber-300 cursor-pointer transition"
         >
@@ -52,9 +55,15 @@
         >
           {{ langService.isArabic() ? "EN" : "ع" }}
         </button>
-        <a routerLink="/login" class="hover:text-amber-300 transition">
+
+        <a
+          routerLink="/login"
+          (click)="scrollTop()"
+          class="hover:text-amber-300 transition"
+        >
           <span class="text-xl">👤</span>
         </a>
+
         <button class="relative hover:text-amber-300 transition">
           <span class="text-xl">🛒</span>
           <span
