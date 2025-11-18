@@ -9,4 +9,9 @@ import { LanguageService } from '../../services/language.service';
 })
 export class FooterComponent {
   langService = inject(LanguageService);
+  data = {
+    name: '',
+    phoneNumber: '+201226237063',
+    email: 'nqraatwood@gmail.com',
+  };
 }

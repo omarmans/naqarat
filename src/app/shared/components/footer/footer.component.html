@@ -63,8 +63,27 @@
           {{ langService.t("تواصل معنا", "Contact Us") }}
         </h4>
         <ul class="space-y-2 text-sm text-amber-200">
-          <li>📞 +20 123 456 7890</li>
-          <li>✉️ infonaqarat.com</li>
+          <!-- واتساب -->
+          <li>
+            <a
+              href="https://wa.me/201226237063"
+              target="_blank"
+              class="hover:text-white transition"
+            >
+              📞 {{ data.phoneNumber }}
+            </a>
+          </li>
+
+          <!-- الإيميل — فتح Gmail -->
+          <li>
+            <a
+              href="mailto:nqraatwood@gmail.com"
+              class="hover:text-white transition"
+            >
+              ✉️ {{ data.email }}
+            </a>
+          </li>
+
           <li>📍 {{ langService.t("القاهرة، مصر", "Cairo, Egypt") }}</li>
         </ul>
       </div>
