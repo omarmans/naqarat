@@ -1,0 +1,135 @@
+<header
+  class="bg-gradient-to-r from-amber-900 to-orange-800 text-white shadow-lg sticky top-0 z-50"
+>
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a
+        routerLink="/"
+        (click)="closeMenu()"
+        class="flex items-center gap-3 cursor-pointer"
+      >
+        <img src="imgs/logo.jpg" alt="" class="w-14 rounded-xl" />
+        <div>
+          <h1 class="text-2xl font-bold">نقرات</h1>
+          <p class="text-xs text-amber-200">
+            {{ langService.t("أثاث منزلي فاخر", "Luxury Home Furniture") }}
+          </p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex gap-6 items-center">
+        <a
+          routerLink="/"
+          routerLinkActive="text-amber-300"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="hover:text-amber-300 cursor-pointer transition"
+        >
+          {{ langService.t("الرئيسية", "Home") }}
+        </a>
+        <a
+          routerLink="/products"
+          routerLinkActive="text-amber-300"
+          class="hover:text-amber-300 cursor-pointer transition"
+        >
+          {{ langService.t("المنتجات", "Products") }}
+        </a>
+        <a
+          routerLink="/about"
+          routerLinkActive="text-amber-300"
+          class="hover:text-amber-300 cursor-pointer transition"
+        >
+          {{ langService.t("من نحن", "About") }}
+        </a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-4">
+        <button
+          (click)="langService.toggleLanguage()"
+          class="px-3 py-1 bg-amber-700 rounded-lg hover:bg-amber-600 transition text-sm"
+        >
+          {{ langService.isArabic() ? "EN" : "ع" }}
+        </button>
+        <a routerLink="/login" class="hover:text-amber-300 transition">
+          <span class="text-xl">👤</span>
+        </a>
+        <button class="relative hover:text-amber-300 transition">
+          <span class="text-xl">🛒</span>
+          <span
+            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+          >
+            {{ cartService.cartCount() }}
+          </span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button
+          (click)="toggleMenu()"
+          class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 hover:bg-amber-700 rounded-lg transition-colors"
+          [attr.aria-label]="isMenuOpen() ? 'Close menu' : 'Open menu'"
+        >
+          <span
+            class="block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out"
+            [class.rotate-45]="isMenuOpen()"
+            [class.translate-y-2]="isMenuOpen()"
+          ></span>
+          <span
+            class="block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out"
+            [class.opacity-0]="isMenuOpen()"
+            [class.scale-0]="isMenuOpen()"
+          ></span>
+          <span
+            class="block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out"
+            [class.-rotate-45]="isMenuOpen()"
+            [class.-translate-y-2]="isMenuOpen()"
+          ></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    class="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+    [class.max-h-96]="isMenuOpen()"
+    [class.max-h-0]="!isMenuOpen()"
+  >
+    <nav class="container mx-auto px-4 pb-4 flex flex-col gap-3">
+      <a
+        routerLink="/"
+        (click)="closeMenu()"
+        routerLinkActive="bg-amber-700"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="py-3 px-4 hover:bg-amber-700 rounded-lg transition-all duration-200 transform hover:translate-x-1"
+      >
+        {{ langService.t("الرئيسية", "Home") }}
+      </a>
+      <a
+        routerLink="/products"
+        (click)="closeMenu()"
+        routerLinkActive="bg-amber-700"
+        class="py-3 px-4 hover:bg-amber-700 rounded-lg transition-all duration-200 transform hover:translate-x-1"
+      >
+        {{ langService.t("المنتجات", "Products") }}
+      </a>
+      <a
+        routerLink="/about"
+        (click)="closeMenu()"
+        routerLinkActive="bg-amber-700"
+        class="py-3 px-4 hover:bg-amber-700 rounded-lg transition-all duration-200 transform hover:translate-x-1"
+      >
+        {{ langService.t("من نحن", "About") }}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- Backdrop -->
+<div
+  *ngIf="isMenuOpen()"
+  (click)="closeMenu()"
+  class="fixed inset-0 bg-black/50 z-40 md:hidden animate-fade-in"
+  [@fadeIn]
+></div>

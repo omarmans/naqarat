@@ -1,0 +1,133 @@
+<div class="container mx-auto px-4 py-12">
+  <div class="max-w-md mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+    <!-- Tabs -->
+    <div class="flex">
+      <button
+        (click)="authMode.set('login')"
+        [class]="
+          authMode() === 'login'
+            ? 'flex-1 py-4 bg-amber-900 text-white font-bold'
+            : 'flex-1 py-4 bg-gray-100 text-gray-600 font-bold'
+        "
+      >
+        {{ langService.t("تسجيل الدخول", "Login") }}
+      </button>
+      <button
+        (click)="authMode.set('register')"
+        [class]="
+          authMode() === 'register'
+            ? 'flex-1 py-4 bg-amber-900 text-white font-bold'
+            : 'flex-1 py-4 bg-gray-100 text-gray-600 font-bold'
+        "
+      >
+        {{ langService.t("إنشاء حساب", "Register") }}
+      </button>
+    </div>
+
+    <!-- Login Form -->
+    <div *ngIf="authMode() === 'login'" class="p-8">
+      <h3 class="text-2xl font-bold text-amber-900 mb-6">
+        {{ langService.t("مرحباً بعودتك!", "Welcome Back!") }}
+      </h3>
+      <form (submit)="handleLogin($event)">
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2 font-semibold">
+            {{ langService.t("البريد الإلكتروني", "Email") }}
+          </label>
+          <input
+            type="email"
+            required
+            class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+            [placeholder]="
+              langService.t('أدخل بريدك الإلكتروني', 'Enter your email')
+            "
+          />
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2 font-semibold">
+            {{ langService.t("كلمة المرور", "Password") }}
+          </label>
+          <input
+            type="password"
+            required
+            class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+            [placeholder]="
+              langService.t('أدخل كلمة المرور', 'Enter your password')
+            "
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-amber-900 text-white py-3 rounded-lg hover:bg-orange-800 transition font-bold"
+        >
+          {{ langService.t("تسجيل الدخول", "Login") }}
+        </button>
+      </form>
+    </div>
+
+    <!-- Register Form -->
+    <div *ngIf="authMode() === 'register'" class="p-8">
+      <h3 class="text-2xl font-bold text-amber-900 mb-6">
+        {{ langService.t("إنشاء حساب جديد", "Create New Account") }}
+      </h3>
+      <form (submit)="handleRegister($event)">
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2 font-semibold">
+            {{ langService.t("الاسم الكامل", "Full Name") }}
+          </label>
+          <input
+            type="text"
+            required
+            class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+            [placeholder]="
+              langService.t('أدخل اسمك الكامل', 'Enter your full name')
+            "
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2 font-semibold">
+            {{ langService.t("البريد الإلكتروني", "Email") }}
+          </label>
+          <input
+            type="email"
+            required
+            class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+            [placeholder]="
+              langService.t('أدخل بريدك الإلكتروني', 'Enter your email')
+            "
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2 font-semibold">
+            {{ langService.t("رقم الهاتف", "Phone Number") }}
+          </label>
+          <input
+            type="tel"
+            required
+            class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+            [placeholder]="langService.t('أدخل رقم هاتفك', 'Enter your phone')"
+          />
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2 font-semibold">
+            {{ langService.t("كلمة المرور", "Password") }}
+          </label>
+          <input
+            type="password"
+            required
+            class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+            [placeholder]="
+              langService.t('أدخل كلمة المرور', 'Enter your password')
+            "
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-amber-900 text-white py-3 rounded-lg hover:bg-orange-800 transition font-bold"
+        >
+          {{ langService.t("إنشاء حساب", "Create Account") }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

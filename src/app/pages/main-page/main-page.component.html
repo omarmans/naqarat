@@ -1,0 +1,107 @@
+<section class="container mx-auto px-4 py-16">
+  <div
+    class="bg-gradient-to-r from-orange-100 to-amber-100 rounded-3xl p-12 shadow-xl"
+  >
+    <div class="max-w-2xl">
+      <h2 class="text-5xl font-bold text-amber-900 mb-4">
+        {{
+          langService.t(
+            "اجعل منزلك أكثر جمالاً",
+            "Make Your Home More Beautiful"
+          )
+        }}
+      </h2>
+      <p class="text-xl text-gray-700 mb-8">
+        {{
+          langService.t(
+            "أثاث عصري وفاخر بأفضل الأسعار",
+            "Modern and luxury furniture at the best prices"
+          )
+        }}
+      </p>
+      <button
+        (click)="router.navigate(['/products'])"
+        class="bg-amber-900 text-white px-8 py-4 rounded-full hover:bg-orange-800 transition text-lg font-semibold shadow-lg"
+      >
+        {{ langService.t("تسوق الآن", "Shop Now") }}
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="container mx-auto px-4 py-12">
+  <h3 class="text-3xl font-bold text-amber-900 mb-8 text-center">
+    {{ langService.t("منتجات مميزة", "Featured Products") }}
+  </h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div
+      *ngFor="let product of productService.getAllProducts().slice(0, 3)"
+      class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition cursor-pointer"
+      (click)="router.navigate(['/products', product.id])"
+    >
+      <div
+        class="h-48 bg-gradient-to-br from-amber-200 to-orange-200 flex items-center justify-center text-7xl"
+      >
+        {{ product.image }}
+      </div>
+      <div class="p-6">
+        <h4 class="font-bold text-xl text-amber-900 mb-2">
+          {{ langService.isArabic() ? product.nameAr : product.nameEn }}
+        </h4>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-yellow-500">⭐</span>
+          <span class="text-sm text-gray-600"
+            >{{ product.rating }} ({{ product.reviews }})</span
+          >
+        </div>
+        <p class="text-2xl font-bold text-orange-600">
+          {{ product.price.toLocaleString() }}
+          {{ langService.t("جنيه", "EGP") }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="container mx-auto px-4 py-12">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="text-center p-6 bg-white rounded-xl shadow-md">
+      <div class="text-5xl mb-3">🚚</div>
+      <h4 class="font-bold text-amber-900 mb-2">
+        {{ langService.t("توصيل مجاني", "Free Delivery") }}
+      </h4>
+      <p class="text-sm text-gray-600">
+        {{ langService.t("على جميع الطلبات", "On all orders") }}
+      </p>
+    </div>
+    <div class="text-center p-6 bg-white rounded-xl shadow-md">
+      <div class="text-5xl mb-3">✅</div>
+      <h4 class="font-bold text-amber-900 mb-2">
+        {{ langService.t("ضمان الجودة", "Quality Guarantee") }}
+      </h4>
+      <p class="text-sm text-gray-600">
+        {{ langService.t("منتجات أصلية 100%", "100% Original") }}
+      </p>
+    </div>
+    <div class="text-center p-6 bg-white rounded-xl shadow-md">
+      <div class="text-5xl mb-3">💳</div>
+      <h4 class="font-bold text-amber-900 mb-2">
+        {{ langService.t("دفع آمن", "Secure Payment") }}
+      </h4>
+      <p class="text-sm text-gray-600">
+        {{ langService.t("حماية كاملة", "Full Protection") }}
+      </p>
+    </div>
+    <div class="text-center p-6 bg-white rounded-xl shadow-md">
+      <div class="text-5xl mb-3">🎁</div>
+      <h4 class="font-bold text-amber-900 mb-2">
+        {{ langService.t("عروض حصرية", "Exclusive Offers") }}
+      </h4>
+      <p class="text-sm text-gray-600">
+        {{ langService.t("خصومات مميزة", "Special Discounts") }}
+      </p>
+    </div>
+  </div>
+</section>

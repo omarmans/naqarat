@@ -1,0 +1,84 @@
+<footer
+  class="bg-gradient-to-r from-amber-900 to-orange-800 text-white py-12 mt-16"
+>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="text-xl font-bold mb-4">نقرات</h4>
+        <p class="text-amber-200 text-sm">
+          {{
+            langService.t(
+              "أفضل متجر أثاث منزلي في مصر",
+              "The best home furniture store in Egypt"
+            )
+          }}
+        </p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">
+          {{ langService.t("روابط سريعة", "Quick Links") }}
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="hover:text-amber-300">{{
+              langService.t("من نحن", "About Us")
+            }}</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-amber-300">{{
+              langService.t("اتصل بنا", "Contact")
+            }}</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-amber-300">{{
+              langService.t("الشروط والأحكام", "Terms")
+            }}</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">
+          {{ langService.t("خدمة العملاء", "Customer Service") }}
+        </h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="hover:text-amber-300">{{
+              langService.t("الأسئلة الشائعة", "FAQ")
+            }}</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-amber-300">{{
+              langService.t("سياسة الإرجاع", "Return Policy")
+            }}</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-amber-300">{{
+              langService.t("الشحن والتوصيل", "Shipping")
+            }}</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">
+          {{ langService.t("تواصل معنا", "Contact Us") }}
+        </h4>
+        <ul class="space-y-2 text-sm text-amber-200">
+          <li>📞 +20 123 456 7890</li>
+          <li>✉️ infonaqarat.com</li>
+          <li>📍 {{ langService.t("القاهرة، مصر", "Cairo, Egypt") }}</li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="border-t border-amber-700 mt-8 pt-6 text-center text-sm text-amber-200"
+    >
+      © 2025
+      {{
+        langService.t(
+          "نقرات - جميع الحقوق محفوظة",
+          "Naqarat - All Rights Reserved"
+        )
+      }}
+    </div>
+  </div>
+</footer>

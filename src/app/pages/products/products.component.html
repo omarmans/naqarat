@@ -1,0 +1,71 @@
+<div class="container mx-auto px-4 py-12">
+  <h2 class="text-4xl font-bold text-amber-900 mb-8">
+    {{ langService.t("جميع المنتجات", "All Products") }}
+  </h2>
+
+  <!-- Search & Filter -->
+  <div class="mb-8 flex flex-col md:flex-row gap-4">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="filterProducts()"
+      [placeholder]="
+        langService.t('ابحث عن منتج...', 'Search for a product...')
+      "
+      class="flex-1 px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+    />
+    <select
+      [(ngModel)]="selectedCategory"
+      (ngModelChange)="filterProducts()"
+      class="px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+    >
+      <option value="all">
+        {{ langService.t("كل الفئات", "All Categories") }}
+      </option>
+      <option value="living">
+        {{ langService.t("غرف المعيشة", "Living Room") }}
+      </option>
+      <option value="bedroom">
+        {{ langService.t("غرف النوم", "Bedroom") }}
+      </option>
+      <option value="dining">
+        {{ langService.t("غرف الطعام", "Dining Room") }}
+      </option>
+      <option value="office">{{ langService.t("المكاتب", "Office") }}</option>
+    </select>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div
+      *ngFor="let product of filteredProducts()"
+      class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition cursor-pointer transform hover:-translate-y-1"
+      (click)="router.navigate(['/products', product.id])"
+    >
+      <div
+        class="h-56 bg-gradient-to-br from-amber-200 to-orange-200 flex items-center justify-center text-8xl"
+      >
+        {{ product.image }}
+      </div>
+      <div class="p-5">
+        <h4 class="font-bold text-lg text-amber-900 mb-2 line-clamp-1">
+          {{ langService.isArabic() ? product.nameAr : product.nameEn }}
+        </h4>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-yellow-500">⭐</span>
+          <span class="text-sm text-gray-600">{{ product.rating }}</span>
+          <span class="text-xs text-gray-400">({{ product.reviews }})</span>
+        </div>
+        <p class="text-2xl font-bold text-orange-600 mb-3">
+          {{ product.price.toLocaleString() }} {{ langService.t("ج.م", "EGP") }}
+        </p>
+        <button
+          (click)="addToCart(product, $event)"
+          class="w-full bg-amber-900 text-white py-2 rounded-lg hover:bg-orange-800 transition"
+        >
+          {{ langService.t("أضف للسلة", "Add to Cart") }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
