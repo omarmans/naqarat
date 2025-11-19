@@ -3,15 +3,12 @@
     {{ langService.t("جميع المنتجات", "All Products") }}
   </h2>
 
-  <!-- Search & Filter -->
   <div class="mb-8 flex flex-col md:flex-row gap-4">
     <input
       type="text"
       [(ngModel)]="searchQuery"
       (ngModelChange)="filterProducts()"
-      [placeholder]="
-        langService.t('ابحث عن منتج...', 'Search for a product...')
-      "
+      [placeholder]="langService.t('ابحث عن منتج...', 'Search...')"
       class="flex-1 px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
     />
     <select
@@ -35,7 +32,6 @@
     </select>
   </div>
 
-  <!-- Products Grid -->
   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
     <div
       *ngFor="let product of filteredProducts()"
@@ -48,13 +44,12 @@
         {{ product.image }}
       </div>
       <div class="p-5">
-        <h4 class="font-bold text-lg text-amber-900 mb-2 line-clamp-1">
+        <h4 class="font-bold text-lg text-amber-900 mb-2">
           {{ langService.isArabic() ? product.nameAr : product.nameEn }}
         </h4>
         <div class="flex items-center gap-2 mb-3">
           <span class="text-yellow-500">⭐</span>
           <span class="text-sm text-gray-600">{{ product.rating }}</span>
-          <span class="text-xs text-gray-400">({{ product.reviews }})</span>
         </div>
         <p class="text-2xl font-bold text-orange-600 mb-3">
           {{ product.price.toLocaleString() }} {{ langService.t("ج.م", "EGP") }}

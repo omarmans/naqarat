@@ -9,7 +9,7 @@
         (click)="closeMenu()"
         class="flex items-center gap-3 cursor-pointer"
       >
-        <img src="imgs/logo.jpg" alt="" class="w-14 rounded-xl" />
+        <img src="imgs/logo.jpg" alt="نقرات لوجو" class="w-14 rounded-xl" />
         <div>
           <h1 class="text-2xl font-bold">نقرات</h1>
           <p class="text-xs text-amber-200">
@@ -38,12 +38,12 @@
           {{ langService.t("المنتجات", "Products") }}
         </a>
         <a
-          routerLink="/about"
+          routerLink="/faq"
           (click)="scrollTop()"
           routerLinkActive="text-amber-300"
           class="hover:text-amber-300 cursor-pointer transition"
         >
-          {{ langService.t("من نحن", "About") }}
+          {{ langService.t("الأسئلة الشائعة", "FAQ") }}
         </a>
       </nav>
 
@@ -57,6 +57,7 @@
         </button>
 
         <a
+          *ngIf="!authService.isLoggedIn()"
           routerLink="/login"
           (click)="scrollTop()"
           class="hover:text-amber-300 transition"
@@ -64,14 +65,40 @@
           <span class="text-xl">👤</span>
         </a>
 
-        <button class="relative hover:text-amber-300 transition">
+        <div *ngIf="authService.isLoggedIn()" class="relative group">
+          <button
+            class="hover:text-amber-300 transition flex items-center gap-2"
+          >
+            <span class="text-xl">👤</span>
+            <span class="text-sm hidden md:block">{{
+              authService.currentUser()?.name
+            }}</span>
+          </button>
+          <div
+            class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+          >
+            <button
+              (click)="authService.logout()"
+              class="w-full px-4 py-2 text-right hover:bg-amber-50 rounded-lg"
+            >
+              {{ langService.t("تسجيل الخروج", "Logout") }}
+            </button>
+          </div>
+        </div>
+
+        <a
+          routerLink="/cart"
+          (click)="scrollTop()"
+          class="relative hover:text-amber-300 transition"
+        >
           <span class="text-xl">🛒</span>
           <span
+            *ngIf="cartService.cartCount() > 0"
             class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
           >
             {{ cartService.cartCount() }}
           </span>
-        </button>
+        </a>
 
         <!-- Mobile Menu Button -->
         <button
@@ -99,7 +126,7 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Navigation -->
   <div
     class="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
     [class.max-h-96]="isMenuOpen()"
@@ -124,21 +151,20 @@
         {{ langService.t("المنتجات", "Products") }}
       </a>
       <a
-        routerLink="/about"
+        routerLink="/faq"
         (click)="closeMenu()"
         routerLinkActive="bg-amber-700"
         class="py-3 px-4 hover:bg-amber-700 rounded-lg transition-all duration-200 transform hover:translate-x-1"
       >
-        {{ langService.t("من نحن", "About") }}
+        {{ langService.t("الأسئلة الشائعة", "FAQ") }}
       </a>
     </nav>
   </div>
 </header>
 
-<!-- Backdrop -->
+<!-- Mobile Menu Overlay -->
 <div
   *ngIf="isMenuOpen()"
   (click)="closeMenu()"
   class="fixed inset-0 bg-black/50 z-40 md:hidden animate-fade-in"
-  [@fadeIn]
 ></div>

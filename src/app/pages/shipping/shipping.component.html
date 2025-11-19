@@ -1,0 +1,343 @@
+<div class="container mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="text-7xl mb-6">🚚</div>
+      <h1 class="text-4xl font-bold text-amber-900 mb-4">
+        {{
+          langService.t("سياسة الشحن والتوصيل", "Shipping & Delivery Policy")
+        }}
+      </h1>
+      <p class="text-xl text-gray-600">
+        {{
+          langService.t(
+            "نوصل طلبك بأمان وسرعة",
+            "We deliver your order safely and quickly"
+          )
+        }}
+      </p>
+    </div>
+
+    <!-- Free Shipping Banner -->
+    <div
+      class="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-3xl p-8 mb-8 text-center"
+    >
+      <div class="text-5xl mb-4">🎉</div>
+      <h2 class="text-3xl font-bold mb-2">
+        {{
+          langService.t(
+            "شحن مجاني لجميع الطلبات!",
+            "Free Shipping on All Orders!"
+          )
+        }}
+      </h2>
+      <p class="text-lg">
+        {{
+          langService.t(
+            "لا توجد رسوم شحن إضافية في جميع أنحاء مصر",
+            "No additional shipping fees throughout Egypt"
+          )
+        }}
+      </p>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+      <div class="space-y-8">
+        <!-- Section 1 -->
+        <div>
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">⏱️</span>
+            {{ langService.t("مدة التوصيل", "Delivery Time") }}
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-amber-50 rounded-xl p-6">
+              <h3 class="font-bold text-amber-900 mb-2 text-lg">
+                {{ langService.t("القاهرة والجيزة", "Cairo & Giza") }}
+              </h3>
+              <p class="text-3xl font-bold text-amber-600 mb-2">
+                3-5 {{ langService.t("أيام", "days") }}
+              </p>
+              <p class="text-sm text-gray-600">
+                {{ langService.t("أيام عمل", "business days") }}
+              </p>
+            </div>
+            <div class="bg-amber-50 rounded-xl p-6">
+              <h3 class="font-bold text-amber-900 mb-2 text-lg">
+                {{ langService.t("باقي المحافظات", "Other Governorates") }}
+              </h3>
+              <p class="text-3xl font-bold text-amber-600 mb-2">
+                5-10 {{ langService.t("أيام", "days") }}
+              </p>
+              <p class="text-sm text-gray-600">
+                {{ langService.t("أيام عمل", "business days") }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="border-t-2 border-amber-200 pt-8">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">📦</span>
+            {{ langService.t("خطوات الشحن", "Shipping Steps") }}
+          </h2>
+          <ol class="space-y-4 text-gray-700">
+            <li class="flex gap-3">
+              <span
+                class="flex-shrink-0 w-8 h-8 bg-amber-900 text-white rounded-full flex items-center justify-center font-bold"
+                >1</span
+              >
+              <div>
+                <p class="font-bold text-amber-900 mb-1">
+                  {{ langService.t("تأكيد الطلب", "Order Confirmation") }}
+                </p>
+                <p>
+                  {{
+                    langService.t(
+                      "بعد إتمام الطلب، ستتلقى رسالة تأكيد عبر البريد الإلكتروني والرسائل النصية",
+                      "After completing the order, you will receive a confirmation message via email and SMS"
+                    )
+                  }}
+                </p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="flex-shrink-0 w-8 h-8 bg-amber-900 text-white rounded-full flex items-center justify-center font-bold"
+                >2</span
+              >
+              <div>
+                <p class="font-bold text-amber-900 mb-1">
+                  {{
+                    langService.t("التجهيز والتغليف", "Preparation & Packaging")
+                  }}
+                </p>
+                <p>
+                  {{
+                    langService.t(
+                      "نقوم بتجهيز طلبك وتغليفه بعناية فائقة خلال 24 ساعة",
+                      "We prepare and carefully package your order within 24 hours"
+                    )
+                  }}
+                </p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="flex-shrink-0 w-8 h-8 bg-amber-900 text-white rounded-full flex items-center justify-center font-bold"
+                >3</span
+              >
+              <div>
+                <p class="font-bold text-amber-900 mb-1">
+                  {{ langService.t("الشحن", "Shipping") }}
+                </p>
+                <p>
+                  {{
+                    langService.t(
+                      "يتم شحن الطلب عبر شركة الشحن وستحصل على رقم التتبع",
+                      "The order is shipped via the shipping company and you will get a tracking number"
+                    )
+                  }}
+                </p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="flex-shrink-0 w-8 h-8 bg-amber-900 text-white rounded-full flex items-center justify-center font-bold"
+                >4</span
+              >
+              <div>
+                <p class="font-bold text-amber-900 mb-1">
+                  {{ langService.t("التوصيل", "Delivery") }}
+                </p>
+                <p>
+                  {{
+                    langService.t(
+                      "سيتصل بك المندوب قبل الوصول بـ 30 دقيقة لتأكيد التسليم",
+                      "The courier will call you 30 minutes before arrival to confirm delivery"
+                    )
+                  }}
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="border-t-2 border-amber-200 pt-8">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">📍</span>
+            {{ langService.t("مناطق التوصيل", "Delivery Areas") }}
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            {{
+              langService.t(
+                "نقوم بالتوصيل إلى جميع المحافظات في جمهورية مصر العربية:",
+                "We deliver to all governorates in the Arab Republic of Egypt:"
+              )
+            }}
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-gray-700">
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>{{ langService.t("القاهرة", "Cairo") }}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>{{ langService.t("الجيزة", "Giza") }}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>{{ langService.t("الإسكندرية", "Alexandria") }}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>{{ langService.t("الدقهلية", "Dakahlia") }}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>{{ langService.t("الشرقية", "Sharqia") }}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span>{{
+                langService.t("وجميع المحافظات", "All Governorates")
+              }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="border-t-2 border-amber-200 pt-8">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">🔍</span>
+            {{ langService.t("تتبع الشحنة", "Track Shipment") }}
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            {{
+              langService.t(
+                "يمكنك تتبع شحنتك بسهولة من خلال:",
+                "You can easily track your shipment through:"
+              )
+            }}
+          </p>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "رقم التتبع الذي سيصلك عبر الرسائل النصية والبريد الإلكتروني",
+                  "The tracking number you will receive via SMS and email"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "التواصل مع خدمة العملاء على الرقم: 01234567890",
+                  "Contact customer service at: 01234567890"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "صفحة طلباتي في حسابك على الموقع",
+                  "My Orders page in your account on the website"
+                )
+              }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="border-t-2 border-amber-200 pt-8">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">⚠️</span>
+            {{ langService.t("ملاحظات هامة", "Important Notes") }}
+          </h2>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "يرجى التأكد من صحة العنوان ورقم الهاتف عند الطلب",
+                  "Please ensure the address and phone number are correct when ordering"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "يجب فحص الشحنة أمام المندوب قبل الاستلام",
+                  "The shipment must be inspected in front of the courier before receiving"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "في حالة وجود أي تلف، يرجى رفض الاستلام وإبلاغنا فوراً",
+                  "In case of any damage, please refuse delivery and inform us immediately"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "مواعيد التوصيل من السبت إلى الخميس من 9 صباحاً حتى 6 مساءً",
+                  "Delivery times are Saturday to Thursday from 9 AM to 6 PM"
+                )
+              }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Card -->
+    <div
+      class="bg-gradient-to-r from-orange-100 to-amber-100 rounded-3xl p-8 text-center"
+    >
+      <h3 class="text-2xl font-bold text-amber-900 mb-4">
+        {{ langService.t("استفسارات حول الشحن؟", "Questions about shipping?") }}
+      </h3>
+      <p class="text-gray-700 mb-6">
+        {{
+          langService.t(
+            "تواصل معنا وسنساعدك في تتبع طلبك",
+            "Contact us and we will help you track your order"
+          )
+        }}
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="tel:+201234567890"
+          class="bg-amber-900 text-white px-8 py-3 rounded-full hover:bg-orange-800 transition font-bold"
+        >
+          📞 {{ langService.t("اتصل بنا", "Call Us") }}
+        </a>
+        <a
+          href="mailto:info@naqarat.com"
+          class="border-2 border-amber-900 text-amber-900 px-8 py-3 rounded-full hover:bg-amber-50 transition font-bold"
+        >
+          ✉️ {{ langService.t("راسلنا", "Email Us") }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

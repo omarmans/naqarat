@@ -1,0 +1,476 @@
+<div class="container mx-auto px-4 py-12">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-4xl font-bold text-amber-900 mb-8">
+      {{ langService.t("إتمام الطلب", "Checkout") }}
+    </h1>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Left Side - Forms -->
+      <div class="md:col-span-2 space-y-6">
+        <!-- Shipping Information -->
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-6 flex items-center gap-3"
+          >
+            <span class="text-3xl">📍</span>
+            {{ langService.t("معلومات الشحن", "Shipping Information") }}
+          </h2>
+
+          <form class="space-y-4">
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-gray-700 mb-2 font-semibold">
+                  {{ langService.t("الاسم الكامل", "Full Name") }}
+                </label>
+                <input
+                  type="text"
+                  required
+                  [(ngModel)]="shippingInfo.name"
+                  name="name"
+                  class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                  [placeholder]="langService.t('أدخل اسمك', 'Enter your name')"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2 font-semibold">
+                  {{ langService.t("رقم الهاتف", "Phone Number") }}
+                </label>
+                <input
+                  type="tel"
+                  required
+                  [(ngModel)]="shippingInfo.phone"
+                  name="phone"
+                  class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                  [placeholder]="langService.t('01xxxxxxxxx', '01xxxxxxxxx')"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 mb-2 font-semibold">
+                {{ langService.t("المحافظة", "Governorate") }}
+              </label>
+              <select
+                required
+                [(ngModel)]="shippingInfo.governorate"
+                name="governorate"
+                class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+              >
+                <option value="">
+                  {{ langService.t("اختر المحافظة", "Select Governorate") }}
+                </option>
+                <option value="cairo">
+                  {{ langService.t("القاهرة", "Cairo") }}
+                </option>
+                <option value="giza">
+                  {{ langService.t("الجيزة", "Giza") }}
+                </option>
+                <option value="alex">
+                  {{ langService.t("الإسكندرية", "Alexandria") }}
+                </option>
+                <option value="other">
+                  {{ langService.t("أخرى", "Other") }}
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 mb-2 font-semibold">
+                {{ langService.t("العنوان بالتفصيل", "Detailed Address") }}
+              </label>
+              <textarea
+                required
+                [(ngModel)]="shippingInfo.address"
+                name="address"
+                rows="3"
+                class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                [placeholder]="
+                  langService.t(
+                    'الشارع، المنطقة، رقم المبنى...',
+                    'Street, Area, Building number...'
+                  )
+                "
+              ></textarea>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 mb-2 font-semibold">
+                {{ langService.t("ملاحظات (اختياري)", "Notes (Optional)") }}
+              </label>
+              <textarea
+                [(ngModel)]="shippingInfo.notes"
+                name="notes"
+                rows="2"
+                class="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                [placeholder]="
+                  langService.t(
+                    'أي ملاحظات إضافية...',
+                    'Any additional notes...'
+                  )
+                "
+              ></textarea>
+            </div>
+          </form>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-6 flex items-center gap-3"
+          >
+            <span class="text-3xl">💳</span>
+            {{ langService.t("طريقة الدفع", "Payment Method") }}
+          </h2>
+
+          <div class="space-y-4">
+            <!-- Cash on Delivery -->
+            <div
+              (click)="selectedPayment.set('cash')"
+              class="border-2 rounded-xl p-6 cursor-pointer transition-all"
+              [class.border-amber-500]="selectedPayment() === 'cash'"
+              [class.bg-amber-50]="selectedPayment() === 'cash'"
+              [class.border-gray-300]="selectedPayment() !== 'cash'"
+            >
+              <div class="flex items-center gap-4">
+                <div class="text-4xl">💵</div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg text-amber-900">
+                    {{
+                      langService.t("الدفع عند الاستلام", "Cash on Delivery")
+                    }}
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    {{
+                      langService.t(
+                        "ادفع نقداً عند استلام الطلب",
+                        "Pay cash when receiving the order"
+                      )
+                    }}
+                  </p>
+                </div>
+                <div
+                  *ngIf="selectedPayment() === 'cash'"
+                  class="text-3xl text-amber-600"
+                >
+                  ✓
+                </div>
+              </div>
+            </div>
+
+            <!-- Credit Card -->
+            <div
+              (click)="selectedPayment.set('card')"
+              class="border-2 rounded-xl p-6 cursor-pointer transition-all"
+              [class.border-amber-500]="selectedPayment() === 'card'"
+              [class.bg-amber-50]="selectedPayment() === 'card'"
+              [class.border-gray-300]="selectedPayment() !== 'card'"
+            >
+              <div class="flex items-center gap-4">
+                <div class="text-4xl">💳</div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg text-amber-900">
+                    {{ langService.t("بطاقة الائتمان", "Credit Card") }}
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    {{ langService.t("فيزا، ماستركارد", "Visa, Mastercard") }}
+                  </p>
+                </div>
+                <div
+                  *ngIf="selectedPayment() === 'card'"
+                  class="text-3xl text-amber-600"
+                >
+                  ✓
+                </div>
+              </div>
+
+              <!-- Card Form -->
+              <div
+                *ngIf="selectedPayment() === 'card'"
+                class="mt-6 space-y-4 border-t pt-4"
+              >
+                <div>
+                  <label class="block text-gray-700 mb-2 font-semibold text-sm">
+                    {{ langService.t("رقم البطاقة", "Card Number") }}
+                  </label>
+                  <input
+                    type="text"
+                    [(ngModel)]="cardInfo.number"
+                    placeholder="1234 5678 9012 3456"
+                    maxlength="19"
+                    class="w-full px-4 py-2 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                  />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      class="block text-gray-700 mb-2 font-semibold text-sm"
+                    >
+                      {{ langService.t("تاريخ الانتهاء", "Expiry Date") }}
+                    </label>
+                    <input
+                      type="text"
+                      [(ngModel)]="cardInfo.expiry"
+                      placeholder="MM/YY"
+                      maxlength="5"
+                      class="w-full px-4 py-2 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="block text-gray-700 mb-2 font-semibold text-sm"
+                    >
+                      {{ langService.t("CVV", "CVV") }}
+                    </label>
+                    <input
+                      type="text"
+                      [(ngModel)]="cardInfo.cvv"
+                      placeholder="123"
+                      maxlength="3"
+                      class="w-full px-4 py-2 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-gray-700 mb-2 font-semibold text-sm">
+                    {{ langService.t("اسم حامل البطاقة", "Cardholder Name") }}
+                  </label>
+                  <input
+                    type="text"
+                    [(ngModel)]="cardInfo.name"
+                    [placeholder]="
+                      langService.t(
+                        'كما هو مكتوب على البطاقة',
+                        'As written on card'
+                      )
+                    "
+                    class="w-full px-4 py-2 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile Wallet -->
+            <div
+              (click)="selectedPayment.set('wallet')"
+              class="border-2 rounded-xl p-6 cursor-pointer transition-all"
+              [class.border-amber-500]="selectedPayment() === 'wallet'"
+              [class.bg-amber-50]="selectedPayment() === 'wallet'"
+              [class.border-gray-300]="selectedPayment() !== 'wallet'"
+            >
+              <div class="flex items-center gap-4">
+                <div class="text-4xl">📱</div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg text-amber-900">
+                    {{ langService.t("المحفظة الإلكترونية", "Mobile Wallet") }}
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    {{
+                      langService.t(
+                        "فودافون كاش، اورانج كاش، اتصالات كاش",
+                        "Vodafone Cash, Orange Cash, Etisalat Cash"
+                      )
+                    }}
+                  </p>
+                </div>
+                <div
+                  *ngIf="selectedPayment() === 'wallet'"
+                  class="text-3xl text-amber-600"
+                >
+                  ✓
+                </div>
+              </div>
+
+              <!-- Wallet Form -->
+              <div
+                *ngIf="selectedPayment() === 'wallet'"
+                class="mt-6 space-y-4 border-t pt-4"
+              >
+                <div>
+                  <label class="block text-gray-700 mb-2 font-semibold text-sm">
+                    {{ langService.t("اختر المحفظة", "Select Wallet") }}
+                  </label>
+                  <select
+                    [(ngModel)]="walletInfo.provider"
+                    class="w-full px-4 py-2 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                  >
+                    <option value="">
+                      {{ langService.t("اختر", "Select") }}
+                    </option>
+                    <option value="vodafone">
+                      {{ langService.t("فودافون كاش", "Vodafone Cash") }}
+                    </option>
+                    <option value="orange">
+                      {{ langService.t("اورانج كاش", "Orange Cash") }}
+                    </option>
+                    <option value="etisalat">
+                      {{ langService.t("اتصالات كاش", "Etisalat Cash") }}
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-gray-700 mb-2 font-semibold text-sm">
+                    {{ langService.t("رقم المحفظة", "Wallet Number") }}
+                  </label>
+                  <input
+                    type="tel"
+                    [(ngModel)]="walletInfo.number"
+                    placeholder="01xxxxxxxxx"
+                    class="w-full px-4 py-2 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- InstaPay -->
+            <div
+              (click)="selectedPayment.set('instapay')"
+              class="border-2 rounded-xl p-6 cursor-pointer transition-all"
+              [class.border-amber-500]="selectedPayment() === 'instapay'"
+              [class.bg-amber-50]="selectedPayment() === 'instapay'"
+              [class.border-gray-300]="selectedPayment() !== 'instapay'"
+            >
+              <div class="flex items-center gap-4">
+                <div class="text-4xl">⚡</div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg text-amber-900">
+                    {{ langService.t("انستا باي", "InstaPay") }}
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    {{
+                      langService.t(
+                        "تحويل فوري عبر رقم الهاتف",
+                        "Instant transfer via phone number"
+                      )
+                    }}
+                  </p>
+                </div>
+                <div
+                  *ngIf="selectedPayment() === 'instapay'"
+                  class="text-3xl text-amber-600"
+                >
+                  ✓
+                </div>
+              </div>
+
+              <!-- InstaPay Form -->
+              <div
+                *ngIf="selectedPayment() === 'instapay'"
+                class="mt-6 space-y-4 border-t pt-4"
+              >
+                <div>
+                  <label class="block text-gray-700 mb-2 font-semibold text-sm">
+                    {{
+                      langService.t(
+                        "رقم الهاتف المسجل",
+                        "Registered Phone Number"
+                      )
+                    }}
+                  </label>
+                  <input
+                    type="tel"
+                    [(ngModel)]="instapayInfo.phone"
+                    placeholder="01xxxxxxxxx"
+                    class="w-full px-4 py-2 border-2 border-amber-300 rounded-lg focus:outline-none focus:border-amber-500"
+                  />
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p class="text-sm text-blue-800">
+                    <span class="font-bold">{{
+                      langService.t("ملاحظة:", "Note:")
+                    }}</span>
+                    {{
+                      langService.t(
+                        "سيتم إرسال طلب دفع على رقم الهاتف المسجل في انستا باي",
+                        "A payment request will be sent to your registered InstaPay phone number"
+                      )
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Order Summary -->
+      <div class="md:col-span-1">
+        <div class="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
+          <h3 class="text-2xl font-bold text-amber-900 mb-6">
+            {{ langService.t("ملخص الطلب", "Order Summary") }}
+          </h3>
+
+          <!-- Products -->
+          <div class="space-y-3 mb-6 max-h-64 overflow-y-auto">
+            <div
+              *ngFor="let item of cartService.cartItems()"
+              class="flex gap-3 pb-3 border-b border-gray-200"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-amber-200 to-orange-200 rounded-lg flex items-center justify-center text-2xl flex-shrink-0"
+              >
+                {{ item.product.image }}
+              </div>
+              <div class="flex-1">
+                <p class="font-semibold text-sm text-gray-800">
+                  {{
+                    langService.isArabic()
+                      ? item.product.nameAr
+                      : item.product.nameEn
+                  }}
+                </p>
+                <p class="text-xs text-gray-500">
+                  {{ langService.t("الكمية:", "Qty:") }} {{ item.quantity }}
+                </p>
+                <p class="text-sm font-bold text-amber-600">
+                  {{ (item.product.price * item.quantity).toLocaleString() }}
+                  {{ langService.t("ج.م", "EGP") }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Totals -->
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between text-gray-700">
+              <span>{{ langService.t("المجموع:", "Subtotal:") }}</span>
+              <span class="font-bold"
+                >{{ cartService.getTotal().toLocaleString() }}
+                {{ langService.t("ج.م", "EGP") }}</span
+              >
+            </div>
+            <div class="flex justify-between text-gray-700">
+              <span>{{ langService.t("الشحن:", "Shipping:") }}</span>
+              <span class="font-bold text-green-600">{{
+                langService.t("مجاني", "Free")
+              }}</span>
+            </div>
+            <div
+              class="border-t-2 border-amber-200 pt-3 flex justify-between text-xl font-bold text-amber-900"
+            >
+              <span>{{ langService.t("الإجمالي:", "Total:") }}</span>
+              <span
+                >{{ cartService.getTotal().toLocaleString() }}
+                {{ langService.t("ج.م", "EGP") }}</span
+              >
+            </div>
+          </div>
+
+          <button
+            (click)="completeOrder()"
+            [disabled]="!isFormValid()"
+            class="w-full bg-amber-900 text-white py-4 rounded-xl hover:bg-orange-800 transition font-bold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {{ langService.t("تأكيد الطلب", "Confirm Order") }}
+          </button>
+
+          <div
+            class="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500"
+          >
+            <span>🔒</span>
+            <span>{{ langService.t("عملية دفع آمنة", "Secure Payment") }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

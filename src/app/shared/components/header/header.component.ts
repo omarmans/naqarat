@@ -3,6 +3,7 @@ import { CartService } from '../../services/cart.service';
 import { LanguageService } from '../../services/language.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class HeaderComponent {
   langService = inject(LanguageService);
   cartService = inject(CartService);
+  authService = inject(AuthService);
   isMenuOpen = signal(false);
 
   scrollTop() {

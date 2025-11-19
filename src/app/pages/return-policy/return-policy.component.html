@@ -1,0 +1,291 @@
+<div class="container mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="text-7xl mb-6">↩️</div>
+      <h1 class="text-4xl font-bold text-amber-900 mb-4">
+        {{
+          langService.t("سياسة الإرجاع والاستبدال", "Return & Exchange Policy")
+        }}
+      </h1>
+      <p class="text-xl text-gray-600">
+        {{
+          langService.t(
+            "نحرص على رضاك التام عن مشترياتك",
+            "We care about your complete satisfaction"
+          )
+        }}
+      </p>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+      <div class="space-y-8">
+        <!-- Section 1 -->
+        <div>
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">⏰</span>
+            {{ langService.t("مدة الإرجاع", "Return Period") }}
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-3">
+            {{
+              langService.t(
+                "يمكنك إرجاع أو استبدال المنتج خلال 14 يوماً من تاريخ استلام الطلب.",
+                "You can return or exchange the product within 14 days from the date of receiving the order."
+              )
+            }}
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            {{
+              langService.t(
+                "يتم احتساب المدة من تاريخ التسليم الفعلي للمنتج وليس من تاريخ الطلب.",
+                "The period is calculated from the actual delivery date of the product, not from the order date."
+              )
+            }}
+          </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="border-t-2 border-amber-200 pt-8">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">✅</span>
+            {{ langService.t("شروط الإرجاع", "Return Conditions") }}
+          </h2>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "يجب أن يكون المنتج في حالته الأصلية دون استخدام أو تلف",
+                  "The product must be in its original condition without use or damage"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "وجود جميع الملحقات والمستندات المرفقة مع المنتج",
+                  "All accessories and documents that came with the product must be present"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "يجب الاحتفاظ بالعبوة الأصلية والتغليف",
+                  "Original packaging and wrapping must be retained"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-amber-600 mt-1">•</span>
+              <span>{{
+                langService.t(
+                  "تقديم فاتورة الشراء الأصلية",
+                  "Provide the original purchase invoice"
+                )
+              }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="border-t-2 border-amber-200 pt-8">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">🔄</span>
+            {{ langService.t("كيفية الإرجاع", "How to Return") }}
+          </h2>
+          <ol class="space-y-4 text-gray-700">
+            <li class="flex gap-3">
+              <span
+                class="flex-shrink-0 w-8 h-8 bg-amber-900 text-white rounded-full flex items-center justify-center font-bold"
+                >1</span
+              >
+              <div>
+                <p class="font-bold text-amber-900 mb-1">
+                  {{ langService.t("تواصل معنا", "Contact Us") }}
+                </p>
+                <p>
+                  {{
+                    langService.t(
+                      "اتصل بخدمة العملاء على 01234567890 أو راسلنا على info@naqarat.com",
+                      "Call customer service at 01234567890 or email us at info@naqarat.com"
+                    )
+                  }}
+                </p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="flex-shrink-0 w-8 h-8 bg-amber-900 text-white rounded-full flex items-center justify-center font-bold"
+                >2</span
+              >
+              <div>
+                <p class="font-bold text-amber-900 mb-1">
+                  {{ langService.t("إرسال التفاصيل", "Send Details") }}
+                </p>
+                <p>
+                  {{
+                    langService.t(
+                      "أرسل رقم الطلب وسبب الإرجاع وصور للمنتج",
+                      "Send the order number, reason for return, and photos of the product"
+                    )
+                  }}
+                </p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="flex-shrink-0 w-8 h-8 bg-amber-900 text-white rounded-full flex items-center justify-center font-bold"
+                >3</span
+              >
+              <div>
+                <p class="font-bold text-amber-900 mb-1">
+                  {{ langService.t("جدولة الاستلام", "Schedule Pickup") }}
+                </p>
+                <p>
+                  {{
+                    langService.t(
+                      "سنرسل مندوب لاستلام المنتج من عنوانك مجاناً",
+                      "We will send a representative to pick up the product from your address for free"
+                    )
+                  }}
+                </p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="flex-shrink-0 w-8 h-8 bg-amber-900 text-white rounded-full flex items-center justify-center font-bold"
+                >4</span
+              >
+              <div>
+                <p class="font-bold text-amber-900 mb-1">
+                  {{ langService.t("الفحص والاسترجاع", "Inspection & Refund") }}
+                </p>
+                <p>
+                  {{
+                    langService.t(
+                      "بعد فحص المنتج، سيتم استرجاع المبلغ خلال 5-7 أيام عمل",
+                      "After product inspection, the amount will be refunded within 5-7 business days"
+                    )
+                  }}
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="border-t-2 border-amber-200 pt-8">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">🔁</span>
+            {{ langService.t("الاستبدال", "Exchange") }}
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-3">
+            {{
+              langService.t(
+                "يمكنك استبدال المنتج بآخر من نفس الفئة السعرية أو دفع الفرق في حالة اختيار منتج أعلى سعراً.",
+                "You can exchange the product for another in the same price category or pay the difference if choosing a higher-priced product."
+              )
+            }}
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            {{
+              langService.t(
+                "في حالة استبدال المنتج بآخر أقل سعراً، سيتم رد الفرق إليك.",
+                "If exchanging for a lower-priced product, the difference will be refunded to you."
+              )
+            }}
+          </p>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="border-t-2 border-amber-200 pt-8">
+          <h2
+            class="text-2xl font-bold text-amber-900 mb-4 flex items-center gap-3"
+          >
+            <span class="text-3xl">❌</span>
+            {{ langService.t("الحالات المستثناة", "Excluded Cases") }}
+          </h2>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>{{
+                langService.t(
+                  "المنتجات المستخدمة أو التالفة نتيجة سوء الاستخدام",
+                  "Used or damaged products due to misuse"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>{{
+                langService.t(
+                  "المنتجات المخصصة حسب الطلب",
+                  "Custom-made products"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>{{
+                langService.t(
+                  "المنتجات التي تم فتحها أو استخدامها",
+                  "Products that have been opened or used"
+                )
+              }}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>{{
+                langService.t(
+                  "المنتجات المعروضة للبيع أو التخفيضات النهائية",
+                  "Products on sale or final discounts"
+                )
+              }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Card -->
+    <div
+      class="bg-gradient-to-r from-orange-100 to-amber-100 rounded-3xl p-8 text-center"
+    >
+      <h3 class="text-2xl font-bold text-amber-900 mb-4">
+        {{ langService.t("هل لديك استفسار؟", "Have a question?") }}
+      </h3>
+      <p class="text-gray-700 mb-6">
+        {{
+          langService.t(
+            "فريق خدمة العملاء لدينا جاهز لمساعدتك",
+            "Our customer service team is ready to help you"
+          )
+        }}
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="tel:+201234567890"
+          class="bg-amber-900 text-white px-8 py-3 rounded-full hover:bg-orange-800 transition font-bold"
+        >
+          📞 {{ langService.t("اتصل بنا", "Call Us") }}
+        </a>
+        <a
+          href="mailto:info@naqarat.com"
+          class="border-2 border-amber-900 text-amber-900 px-8 py-3 rounded-full hover:bg-amber-50 transition font-bold"
+        >
+          ✉️ {{ langService.t("راسلنا", "Email Us") }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

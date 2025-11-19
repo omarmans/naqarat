@@ -1,0 +1,81 @@
+<div class="container mx-auto px-4 py-12">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold text-amber-900 mb-4">
+      {{ langService.t("الأسئلة الشائعة", "Frequently Asked Questions") }}
+    </h2>
+    <p class="text-xl text-gray-600">
+      {{
+        langService.t(
+          "إجابات على أكثر الأسئلة شيوعاً",
+          "Answers to the most common questions"
+        )
+      }}
+    </p>
+  </div>
+
+  <div class="max-w-3xl mx-auto space-y-4">
+    <div
+      *ngFor="let faq of faqs; let i = index"
+      class="bg-white rounded-2xl shadow-lg overflow-hidden"
+    >
+      <button
+        (click)="toggleFAQ(i)"
+        class="w-full px-6 py-5 flex items-center justify-between hover:bg-amber-50 transition"
+      >
+        <span class="text-lg font-bold text-amber-900 text-right flex-1">
+          {{ langService.isArabic() ? faq.questionAr : faq.questionEn }}
+        </span>
+        <span
+          class="text-2xl text-amber-900 transform transition-transform"
+          [class.rotate-180]="openIndex() === i"
+        >
+          ▼
+        </span>
+      </button>
+
+      <div
+        *ngIf="openIndex() === i"
+        class="px-6 py-5 bg-amber-50 border-t-2 border-amber-200"
+      >
+        <p class="text-gray-700 leading-relaxed">
+          {{ langService.isArabic() ? faq.answerAr : faq.answerEn }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="mt-12 text-center bg-gradient-to-r from-orange-100 to-amber-100 rounded-3xl p-12"
+  >
+    <h3 class="text-2xl font-bold text-amber-900 mb-4">
+      {{ langService.t("لم تجد إجابة لسؤالك؟", "Didn't find your answer?") }}
+    </h3>
+
+    <p class="text-gray-700 mb-6">
+      {{
+        langService.t(
+          "تواصل معنا وسنكون سعداء بمساعدتك",
+          "Contact us and we'll be happy to help"
+        )
+      }}
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      <!-- 📞 Call Us (Dynamic Phone Number) -->
+      <a
+        [href]="'tel:' + data.phoneNumber"
+        class="bg-amber-900 text-white px-8 py-3 rounded-full hover:bg-orange-800 transition font-bold"
+      >
+        📞 {{ langService.t("اتصل بنا", "Call Us") }}
+      </a>
+
+      <!-- ✉️ Email Us (Dynamic Email) -->
+      <a
+        [href]="'mailto:' + data.email"
+        class="border-2 border-amber-900 text-amber-900 px-8 py-3 rounded-full hover:bg-amber-50 transition font-bold"
+      >
+        ✉️ {{ langService.t("راسلنا", "Email Us") }}
+      </a>
+    </div>
+  </div>
+</div>

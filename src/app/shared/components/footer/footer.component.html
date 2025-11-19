@@ -20,18 +20,18 @@
         </h4>
         <ul class="space-y-2 text-sm">
           <li>
-            <a href="#" class="hover:text-amber-300">{{
-              langService.t("من نحن", "About Us")
+            <a routerLink="/" class="hover:text-amber-300 transition">{{
+              langService.t("الرئيسية", "Home")
             }}</a>
           </li>
           <li>
-            <a href="#" class="hover:text-amber-300">{{
-              langService.t("اتصل بنا", "Contact")
+            <a routerLink="/products" class="hover:text-amber-300 transition">{{
+              langService.t("المنتجات", "Products")
             }}</a>
           </li>
           <li>
-            <a href="#" class="hover:text-amber-300">{{
-              langService.t("الشروط والأحكام", "Terms")
+            <a routerLink="/faq" class="hover:text-amber-300 transition">{{
+              langService.t("الأسئلة الشائعة", "FAQ")
             }}</a>
           </li>
         </ul>
@@ -42,17 +42,19 @@
         </h4>
         <ul class="space-y-2 text-sm">
           <li>
-            <a href="#" class="hover:text-amber-300">{{
+            <a routerLink="/faq" class="hover:text-amber-300 transition">{{
               langService.t("الأسئلة الشائعة", "FAQ")
             }}</a>
           </li>
           <li>
-            <a href="#" class="hover:text-amber-300">{{
-              langService.t("سياسة الإرجاع", "Return Policy")
-            }}</a>
+            <a
+              routerLink="/return-policy"
+              class="hover:text-amber-300 transition"
+              >{{ langService.t("سياسة الإرجاع", "Return Policy") }}</a
+            >
           </li>
           <li>
-            <a href="#" class="hover:text-amber-300">{{
+            <a routerLink="/shipping" class="hover:text-amber-300 transition">{{
               langService.t("الشحن والتوصيل", "Shipping")
             }}</a>
           </li>
@@ -60,7 +62,7 @@
       </div>
       <div>
         <h4 class="font-bold mb-4">
-          {{ langService.t("تواصل معنا", "Contact Us") }}
+          {{ langService.t("تواصل معنا", "Contact") }}
         </h4>
         <ul class="space-y-2 text-sm text-amber-200">
           <!-- واتساب -->
